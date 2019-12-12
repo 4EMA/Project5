@@ -1,6 +1,6 @@
 package MyMa;
 
-public abstract class carLease {
+public abstract class carLease<taxRate, moneyFactor, interestAmount> {
 
     /*
         Create 2 string   (name , whichModel)
@@ -9,34 +9,88 @@ public abstract class carLease {
 
         3  double (taxRate , moneyFactor , interestAmount)
 
-     */
+     */ public String name;
+    public String whichModel;
+    public int age;
+    public int salary;
+    public int totalCost;
+    public int downPayment;
+    public int termofLease;
+    public int leaseFee;
+    public int depractionAmount;
+    public double taxRate;
+    public double moneyFactor;
+    public double interestAmount;
+
+
+    public carLease(String name, String whichModel, int age, int salary, int totalCost, int downPayment, int termofLease, int leaseFee, double taxRate, double moneyFactor) {
+        this.name = name;
+        this.whichModel = whichModel;
+        this.age = age;
+        this.salary = salary;
+        this.totalCost = totalCost;
+        this.downPayment = downPayment;
+        this.termofLease = termofLease;
+        this.leaseFee = leaseFee;
+        this.taxRate = taxRate;
+        this.moneyFactor = moneyFactor;
+        depractionAmount = calculateDepreciation();
+        interestAmount = calculateInterest();
+    }
+
+    public int calculateDepreciation() {
+                return (totalCost - downPayment) / termofLease;
+            }
+            public double calculateInterest () {
+                return (totalCost + downPayment) * moneyFactor;
+            }
+    public double taxes () {
+        return depractionAmount + interestAmount * taxRate;
+
+    }
+        public int getSalary() {
+        return salary;
+    }
+
+
+
+}
+
+
+
+
+
+
 
 
     /*
 
-        Create a constructor
+       Create a constructor
 
-        All the variables are should be as a parameter except (depractionAmount and interestAmount)
+       All the variables are should be as a parameter except (depractionAmount and interestAmount)
 
-        depractionAmount = calculateDepreciation method (you will create this in this class)
+       depractionAmount = calculateDepreciation method (you will create this in this class)
 
-        interestAmount = calculateInterest method (you will create this in this class)
+       interestAmount = calculateInterest method (you will create this in this class)
+
+    */
+
+
+
+    /*
+     Create a method
+
+            calculateDepreciation
+
+            return type should be int
+
+            calculation is :
+
+            total cost minus down payment divide by term of lease
 
      */
 
 
-/*
- Create a method
-
-        calculateDepreciation
-
-        return type should be int
-
-        calculation is :
-
-        total cost minus down payment divide by term of lease
-
- */
 
     /*
        calculateInterest
@@ -47,18 +101,19 @@ public abstract class carLease {
 
      */
 
-    /*
 
-        taxes
-           return type should be double
+                /*
 
-            calculation is :
-            depractionAmount + interestAmount * taxRate
+                    taxes
+                       return type should be double
 
-     */
+                        calculation is :
+                        depractionAmount + interestAmount * taxRate
 
-    /*
-     getter for the (getSalary)
-     */
+                 */
 
-}
+                /*
+                 getter for the (getSalary)
+                 */
+
+
